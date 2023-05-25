@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# webauthn-demo
+This project is a simple React application that uses WebAuthn passkeys for user authentication.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Key Files
 
-## Available Scripts
+The primary logic of the authentication system resides in two important files: `src/hooks/webAuthn.ts` and `src/App.js`.
 
-In the project directory, you can run:
+### [src/hooks/webAuthn.ts](src/hooks/webAuthn.ts)
 
-### `npm start`
+This file contains the core WebAuthn authentication logic. It exports several interfaces for managing WebAuthn options, as well as a `webAuthn` function that generates functions for creating and obtaining credentials. The interfaces manage different types of WebAuthn options, and the `webAuthn` function handles the core WebAuthn operations.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### [src/App.js](src/App.js)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This file is the main React component file of the application. It handles user interaction with the application interface, and uses the hooks defined in src/hooks/webAuthn.ts to register and authenticate users.
 
-### `npm test`
+## Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Assuming node.js is installed, use the following command:
+`npm install && npm start`
 
-### `npm run build`
+The page will then open in the default browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To use this application, users simply enter their login information into the input field and click 'register'. This registers their login with the WebAuthn system. During this, the browser will present a dialog asking where they would like to save their passkey, such as a supported mobile device via a QR code or locally on the same device, protected with system biometrics. Users can then click 'auth' to authenticate themselves with the system.
